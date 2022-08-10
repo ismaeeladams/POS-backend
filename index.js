@@ -18,12 +18,12 @@ app.use(express.static("public"));
 //   res.sendFile(__dirnamev + "/" + "index.html");
 // });
 
-const userRoutes = require("./Routes/userRoute");
+const userRoutes = require("./Routes/UserRoute");
 app.use("/users", userRoutes);
 // app.use("/users/register", userRoutes);
 // app.use("/users/login", userRoutes);
 
-const productsRoutes = require("./Routes/productsRoute");
+const productsRoutes = require("./Routes/ProductsRoute");
 app.use("/products", productsRoutes);
 
 // const orderRoutes = require("./Routes/orderRoute");
