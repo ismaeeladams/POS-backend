@@ -14,9 +14,9 @@ const jwt = require("jsonwebtoken");
 app.use(express.static("public"));
 // app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get("/", function (req, res) {
-  res.sendFile(__dirnamev + "/" + "index.html");
-});
+// app.get("/", function (req, res) {
+//   res.sendFile(__dirnamev + "/" + "index.html");
+// });
 
 const userRoutes = require("./Routes/userRoute");
 app.use("/users", userRoutes);
@@ -26,11 +26,11 @@ app.use("/users", userRoutes);
 const productsRoutes = require("./Routes/productsRoute");
 app.use("/products", productsRoutes);
 
-const orderRoutes = require("./Routes/orderRoute");
-app.use("/orders", orderRoutes);
+// const orderRoutes = require("./Routes/orderRoute");
+// app.use("/orders", orderRoutes);
 
-const categoriesRoutes = require("./Routes/categoriesRoute");
-app.use("/categories", categoriesRoutes);
+// const categoriesRoutes = require("./Routes/categoriesRoute");
+// app.use("/categories", categoriesRoutes);
 
 app.listen(app.get("port"), () => {
   console.log(`Listening for calls on port ${app.get("port")}`);
