@@ -98,13 +98,30 @@ router.delete("/:id", (req, res) => {
 router.put("/:id", (req, res) => {
   const { amount, order_status, cart } = req.body;
   try {
-    con.query(
-      `UPDATE orders SET amount = "${amount}", order_status = "${order_status}", cart = "${cart}" WHERE order_id = "${req.params.id}" `,
-      (err, result) => {
-        if (err) throw err;
-        res.send(result);
-      }
-    );
+    // let sql = "SELECT * FROM users WHERE ?";
+    // const user = {
+    //   user_id: req.user.user_id,
+    // };
+    // con.query(
+    //   `UPDATE orders SET amount = "${amount}", order_status = "${order_status}", cart = "${cart}" WHERE order_id = "${req.params.id}" `,
+    //   (err, result) => {
+    //     if (err) throw err;
+    //     res.send(result);
+    //   }
+    // );
+
+    let orderSql = "UPDATE orders SET ?";
+    let jsonCart = JSON.stringify(cart);
+    let order = {
+      amount,
+      // user_id: result[0].user_id,
+      order_status,
+      cart: jsonCart,
+    };
+    con.query(orderSql, order, (err, result) => {
+      if (err) throw err;
+      res.send("Order Edited");
+    });
   } catch (error) {
     console.log(error);
   }
